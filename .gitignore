@@ -1,0 +1,7 @@
+﻿app/
+dist/
+node_modules/
+release-tools/node_modules/
+release-tools/package-lock.json
+.env
+data/

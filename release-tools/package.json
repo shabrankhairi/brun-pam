@@ -1,0 +1,9 @@
+{
+  "name": "brun-release-tools",
+  "private": true,
+  "description": "Build-time tooling only -- never shipped in the runtime image.",
+  "devDependencies": {
+    "javascript-obfuscator": "latest",
+    "html-minifier-terser": "latest"
+  }
+}

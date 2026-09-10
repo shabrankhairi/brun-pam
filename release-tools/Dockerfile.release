@@ -1,0 +1,29 @@
+# Dockerfile.release
+# ===================
+# Dipakai untuk build IMAGE PUBLIK yang di-push ke registry dan ditarik oleh
+# installer end-user. HANYA menyalin dist/ (hasil release-tools/build-release.js),
+# TIDAK PERNAH menyalin app/ (source asli yang masih bisa dibaca manusia).
+#
+# Jalankan dari root repo:
+#   node release-tools/build-release.js
+#   docker build -f release-tools/Dockerfile.release -t ghcr.io/<username>/brun-app:latest .
+#   docker push ghcr.io/<username>/brun-app:latest
+
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Cuma isi dist/ yang masuk build context image ini -- source asli (app/)
+# sama sekali tidak pernah disalin ke sini.
+COPY dist/package.json dist/package-lock.json* ./
+RUN npm install --omit=dev && npm cache clean --force
+
+COPY dist/server.js ./
+COPY dist/public ./public
+
+# Hapus symlink/metadata npm yang kadang menyisakan path lokal builder
+RUN find /app/node_modules -name "*.map" -delete 2>/dev/null || true
+
+EXPOSE 3000 8081
+
+CMD ["node", "server.js"]
