@@ -5,7 +5,7 @@ set -euo pipefail
 # Brun installer
 # ==========================================================================
 # Usage:
-#   wget -qO- https://raw.githubusercontent.com/REPLACE_WITH_YOUR_GITHUB_USERNAME/brun-pam/main/install.sh | bash
+#   wget -qO- https://raw.githubusercontent.com/shabrankhairi/brun-pam/main/install.sh | bash
 #
 # What this script does:
 #   1. Checks/installs Docker + the Compose plugin
@@ -21,7 +21,7 @@ set -euo pipefail
 # This script deliberately never clones or downloads the app/ source tree.
 # ==========================================================================
 
-GITHUB_USER="REPLACE_WITH_YOUR_GITHUB_USERNAME"
+GITHUB_USER="shabrankhairi"
 GITHUB_REPO="brun-pam"
 GITHUB_BRANCH="main"
 BRUN_IMAGE="ghcr.io/${GITHUB_USER}/brun-app"

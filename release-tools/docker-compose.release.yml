@@ -21,7 +21,7 @@ services:
       - brun_devices
 
   app:
-    image: ${BRUN_IMAGE:-ghcr.io/REPLACE_WITH_YOUR_GITHUB_USERNAME/brun-app}:${BRUN_VERSION:-latest}
+    image: ${BRUN_IMAGE:-ghcr.io/shabrankhairi/brun-app}:${BRUN_VERSION:-latest}
     container_name: brun-app
     restart: unless-stopped
     environment:
